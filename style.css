@@ -1,0 +1,668 @@
+/* =========================================
+   VARIÁVEIS DE CORES E ESTILOS (Paleta Ubuntu)
+   ========================================= */
+:root {
+    --roxo-profundo: #3B1E6E;
+    --roxo-claro: #7C4DFF;
+    --dourado: #FFC93C;
+    --verde-esmeralda: #2EC4A6;
+    --off-white: #F7F4EE;
+    --grafite: #1A1A2E;
+    
+    --fonte-titulo: 'Poppins', sans-serif;
+    --fonte-texto: 'Nunito', sans-serif;
+    
+    --sombra-card: 0 10px 30px rgba(59, 30, 110, 0.1);
+    --sombra-hover: 0 15px 40px rgba(59, 30, 110, 0.2);
+    --transicao: all 0.3s ease;
+}
+
+/* =========================================
+   RESET E ESTILOS GERAIS
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave */
+    scroll-padding-top: 80px; /* Compensa o menu fixo */
+}
+
+body {
+    font-family: var(--fonte-texto);
+    background-color: var(--off-white);
+    color: var(--grafite);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    color: var(--roxo-profundo);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   HEADER E MENU DE NAVEGAÇÃO
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--roxo-profundo);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: var(--transicao);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    border-radius: 50%; /* Deixa a logo redondinha se a imagem tiver fundo */
+}
+
+.logo-text {
+    font-family: var(--fonte-titulo);
+    font-size: 1.8rem;
+    color: var(--off-white);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-link {
+    color: var(--off-white);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transicao);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Efeito de sublinhado animado no menu */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--dourado);
+    transition: var(--transicao);
+    border-radius: 2px;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--dourado);
+}
+
+/* Botão de Quiz no Menu (Destaque) */
+.btn-quiz-nav {
+    background-color: var(--dourado);
+    color: var(--roxo-profundo) !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 800;
+    transition: var(--transicao);
+}
+
+.btn-quiz-nav::after {
+    display: none; /* Remove o sublinhado */
+}
+
+.btn-quiz-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 201, 60, 0.4);
+}
+
+/* Menu Hambúrguer (Mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--off-white);
+    border-radius: 2px;
+    transition: var(--transicao);
+}
+
+/* =========================================
+   HERO SECTION (Início)
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    margin-top: 70px;
+    background-image: url('assets/imagemdefundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Overlay escuro para garantir leitura do texto */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(59, 30, 110, 0.85); /* Roxo com transparência */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: var(--off-white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.hero-title .highlight {
+    color: var(--dourado);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--off-white);
+    margin-bottom: 40px;
+    font-weight: 600;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    animation: fadeInUp 1.2s ease;
+}
+
+/* =========================================
+   BOTÕES (Estilo Gamificado)
+   ========================================= */
+.btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-family: var(--fonte-titulo);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: var(--transicao);
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:active {
+    transform: scale(0.95); /* Efeito de apertar o botão */
+}
+
+.btn-primary {
+    background-color: var(--dourado);
+    color: var(--roxo-profundo);
+    box-shadow: 0 6px 0 #c99b1f; /* Efeito 3D de jogo */
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #c99b1f, 0 10px 20px rgba(255, 201, 60, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #c99b1f;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--off-white);
+    border: 2px solid var(--verde-esmeralda);
+}
+
+.btn-secondary:hover {
+    background-color: var(--verde-esmeralda);
+    color: var(--roxo-profundo);
+}
+
+/* =========================================
+   SEÇÕES GERAIS
+   ========================================= */
+.section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.bg-light { background-color: #EFEBE1; }
+.bg-dark { background-color: var(--roxo-profundo); }
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--verde-esmeralda);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.section-desc {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color: #555;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-white { color: var(--off-white); }
+
+/* =========================================
+   CARDS (Biografias e Cultura)
+   ========================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--off-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao);
+    border: 2px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--sombra-hover);
+    border-color: var(--dourado);
+}
+
+.card-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--verde-esmeralda);
+}
+
+.card-content {
+    padding: 25px;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--roxo-profundo);
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Cards de Cultura (sem imagem) */
+.info-card {
+    padding: 40px 25px;
+    text-align: center;
+    border-bottom: 5px solid var(--roxo-claro);
+}
+
+.info-card .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   GLOSSÁRIO (Conceitos)
+   ========================================= */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+#glossario-search {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: 2px solid var(--roxo-claro);
+    font-family: var(--fonte-texto);
+    font-size: 1.1rem;
+    outline: none;
+    transition: var(--transicao);
+    background-color: white;
+}
+
+#glossario-search:focus {
+    border-color: var(--verde-esmeralda);
+    box-shadow: 0 0 15px rgba(46, 196, 166, 0.2);
+}
+
+.glossario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.glossario-item {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--sombra-card);
+    border-left: 6px solid var(--dourado);
+    transition: var(--transicao);
+}
+
+.glossario-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--sombra-hover);
+}
+
+.glossario-item h4 {
+    color: var(--roxo-profundo);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.no-results {
+    font-size: 1.2rem;
+    color: var(--roxo-profundo);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* =========================================
+   QUIZ GAMIFICADO
+   ========================================= */
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--off-white);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-screen {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.quiz-screen.active {
+    display: block;
+}
+
+#quiz-start h3, #quiz-result h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#quiz-start p, #quiz-result p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Header do Quiz (Pontuação e Progresso) */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--roxo-profundo);
+}
+
+#score-display {
+    background-color: var(--dourado);
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: var(--roxo-profundo);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--verde-esmeralda);
+    width: 0%;
+    transition: width 0.4s ease;
+    border-radius: 10px;
+}
+
+#question-text {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--roxo-profundo);
+}
+
+/* Opções de Resposta */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    background-color: white;
+    border: 2px solid var(--roxo-claro);
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-family: var(--fonte-texto);
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transicao);
+    color: var(--grafite);
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: var(--roxo-claro);
+    color: white;
+    transform: translateX(5px);
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Classes de Acerto e Erro */
+.option-btn.correct {
+    background-color: var(--verde-esmeralda);
+    border-color: var(--verde-esmeralda);
+    color: white;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background-color: #ff6b6b;
+    border-color: #ff6b6b;
+    color: white;
+}
+
+/* Medalha de Resultado */
+.medal {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    animation: bounce 1s infinite alternate;
+}
+
+/* =========================================
+   FOOTER (Autores)
+   ========================================= */
+.footer {
+    background-color: var(--grafite);
+    color: var(--off-white);
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 5px solid var(--dourado);
+}
+
+.footer h3 {
+    color: var(--dourado);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer strong {
+    color: var(--verde-esmeralda);
+    font-size: 1.3rem;
+}
+
+.footer-sub {
+    font-size: 0.9rem !important;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* =========================================
+   ANIMAÇÕES E RESPONSIVIDADE
+   ========================================= */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
+}
+
+/* Responsividade para Celulares e Tablets */
+@media (max-width: 900px) {
+    .hero-title { font-size: 2.5rem; }
+    
+    .nav-menu {
+        position: fixed;
+        top: 75px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background-color: var(--roxo-profundo);
+        flex-direction: column;
+        transition: 0.4s;
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Animação do Hambúrguer para X */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-buttons { flex-direction: column; }
+    
+    .section { padding: 60px 5%; }
+    .section-title { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+    .hero-title { font-size: 2rem; }
+    .quiz-container { padding: 20px; }
+    #question-text { font-size: 1.2rem; }
+    .option-btn { font-size: 1rem; }
+    .glossario-grid { grid-template-columns: 1fr; }
+}
